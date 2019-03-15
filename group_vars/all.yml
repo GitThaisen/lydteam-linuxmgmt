@@ -2,6 +2,4 @@
 influx_url: "http://influx.nrk.no:8086"
 influx_database: lydteammonitor
 influx_username: lydteammonitor
-#This one should be protected when updated to real value
-influx_password: lydteammonitor
 slack_token: "T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP"
