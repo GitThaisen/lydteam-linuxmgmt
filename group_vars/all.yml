@@ -4,3 +4,4 @@ influx_database: lydteam_monitor
 influx_username: lydteam_monitor
 #This one should be protected when updated to real value
 influx_password: lydteam_monitor
+slack_token: "T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP"

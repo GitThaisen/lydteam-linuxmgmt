@@ -1,0 +1,8 @@
+---
+- name: Set up mysql input
+  copy:
+    src: input_mysql.conf
+    dest: /etc/telegraf/telegraf.d/input_mysql.conf
+    owner: telegraf
+    group: telegraf
+    mode: 0440

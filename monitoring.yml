@@ -1,11 +1,21 @@
-## Ansible Playbook to set up telegraf agent for influx
-- hosts: localhost
-  gather_facts: false
-  become: true
+---
+####  Ansible Playbook to set up telegraf agent for influx
+
+# Agent, common
+#- hosts: all
+#  tasks:
+#    - include_role:
+#        name: telegraf
+
+#Then separate hosts task lists for inputs, depending on include_role
+- hosts: mysql
   tasks:
     - include_role:
         name: telegraf
+        tasks_from: input_mysql
 
-    #- include_role:
-    #    name: telegraf
-    #    tasks_from: test
+- hosts: docker
+  tasks:
+    - include_role:
+        name: telegraf
+        tasks_from: input_docker

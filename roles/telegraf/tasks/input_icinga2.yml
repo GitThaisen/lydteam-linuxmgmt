@@ -1,0 +1,8 @@
+---
+- name: Set up icinga2 input
+  copy:
+    src: input_icinga2.conf
+    dest: /etc/telegraf/telegraf.d/input_icinga2.conf
+    owner: telegraf
+    group: telegraf
+    mode: 0440

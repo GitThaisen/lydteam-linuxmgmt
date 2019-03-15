@@ -1,0 +1,8 @@
+---
+- name: Set up jenkins input
+  copy:
+    src: input_jenkins.conf
+    dest: /etc/telegraf/telegraf.d/input_jenkins.conf
+    owner: telegraf
+    group: telegraf
+    mode: 0440

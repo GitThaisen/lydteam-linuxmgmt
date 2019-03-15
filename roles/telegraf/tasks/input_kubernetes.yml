@@ -1,0 +1,8 @@
+---
+- name: Set up kubernetes input
+  copy:
+    src: input_kubernetes.conf
+    dest: /etc/telegraf/telegraf.d/input_kubernetes.conf
+    owner: telegraf
+    group: telegraf
+    mode: 0440

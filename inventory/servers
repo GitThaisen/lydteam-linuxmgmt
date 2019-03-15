@@ -118,6 +118,16 @@ malxmusikkarkivmediaproxy01
 
 ### Docker
 
+[docker:vars]
+role = docker
+
+[docker:children]
+docker-radioarkiv
+
+[docker-radioarkiv:children]
+docker-radioarkiv-dev
+docker-radioarkiv-prod
+
 [docker-radioarkiv-dev]
 malxmetautv01
 malxmetadev01

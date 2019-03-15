@@ -1,0 +1,8 @@
+---
+- name: Set up tcp input
+  copy:
+    src: input_tcp.conf
+    dest: /etc/telegraf/telegraf.d/input_tcp.conf
+    owner: telegraf
+    group: telegraf
+    mode: 0440

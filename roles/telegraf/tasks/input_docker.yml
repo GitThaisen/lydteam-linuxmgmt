@@ -1,0 +1,8 @@
+---
+- name: Set up docker input
+  copy:
+    src: input_docker.conf
+    dest: /etc/telegraf/telegraf.d/input_docker.conf
+    owner: telegraf
+    group: telegraf
+    mode: 0440
