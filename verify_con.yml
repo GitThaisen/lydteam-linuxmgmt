@@ -1,0 +1,14 @@
+---
+## Ansible Playbook to set up telegraf agent for influx
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+
+    - name: Register uptime
+      command: uptime
+      register: uptime
+
+    - name: Report uptime
+      debug:
+        msg: "Uptime: {{ uptime.stdout }}"

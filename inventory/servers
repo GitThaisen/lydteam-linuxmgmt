@@ -1,0 +1,180 @@
+#Naming rule: role-project-stage_environment
+
+### Elasticsearch
+
+[elasticsearch:vars]
+role = elasticsearch
+
+[elasticsearch:children]
+elasticsearch-musikkarkiv
+elasticsearch-radioarkiv
+
+[elasticsearch-musikkarkiv:children]
+elasticsearch-musikkarkiv-dev
+elasticsearch-musikkarkiv-stage
+elasticsearch-musikkarkiv-prod
+
+[elasticsearch-radioarkiv:children]
+elasticsearch-radioarkiv-prod
+elasticsearch-radioarkiv-dev
+
+[elasticsearch-radioarkiv-prod]
+malxradioarkives01
+malxradioarkives02
+malxradioarkives03
+
+[elasticsearch-radioarkiv-dev]
+malxradioarkivesdev01
+malxradioarkivesdev02
+
+[elasticsearch-musikkarkiv-dev]
+malxmusikkarkivesdev01
+malxmusikkarkivesdev02
+malxmusikkarkivesdev03
+
+[elasticsearch-musikkarkiv-stage]
+malxmusikkarkivesstage01
+malxmusikkarkivesstage02
+malxmusikkarkivesstage03
+
+[elasticsearch-musikkarkiv-prod]
+malxmusikkarkives01
+malxmusikkarkives02
+malxmusikkarkives03
+
+### MySQL
+
+[mysql:vars]
+role = mysql
+
+[mysql:children]
+mysql-musikkarkiv
+
+[mysql-musikkarkiv:children]
+mysql-musikkarkiv-prod
+mysql-radioarkiv-prod
+
+[mysql-musikkarkiv-prod]
+malxmusikkarkivmysql01
+malxmusikkarkivmysql02
+
+[mysql-radioarkiv-prod]
+malxradioarkivmysql01
+malxradioarkivmysql02
+
+### Metadata
+
+[metadata:vars]
+role = metadata
+
+[metadata:children]
+metadata-prod
+
+[metadata-prod]
+malxautoritetsdb01
+
+### Virtuoso
+[virtuoso:vars]
+role = virtuoso
+
+[virtuoso:children]
+virtuoso-folkemusikk
+
+[virtuoso-folkemusikk:children]
+virtuoso-folkemusikk-dev
+virtuoso-folkemusikk-stage
+virtuoso-folkemusikk-prod
+
+[virtuoso-folkemusikk-dev]
+malxfolkemusikkvirtuosodev01
+
+[virtuoso-folkemusikk-stage]
+malxfolkemusikkvirtuosostage01
+
+[virtuoso-folkemusikk-prod]
+malxfolkemusikkvirtuoso01
+
+### Mediaproxy
+
+[mediaproxy:vars]
+role = mediaproxy
+
+[mediaproxy:children]
+mediaproxy-musikkarkiv
+
+[mediaproxy-musikkarkiv:children]
+mediaproxy-musikkarkiv-dev
+mediaproxy-musikkarkiv-stage
+mediaproxy-musikkarkiv-prod
+
+[mediaproxy-musikkarkiv-dev]
+malxmusikkarkivmediaproxydev01
+
+[mediaproxy-musikkarkiv-stage]
+malxmusikkarkivmediaproxystg01
+
+[mediaproxy-musikkarkiv-prod]
+malxmusikkarkivmediaproxy01
+
+### Docker
+
+[docker-radioarkiv-dev]
+malxmetautv01
+malxmetadev01
+malxmetadev02
+malxmetadev04
+drlxmetadev05
+drlxmetadev06
+malxmetadbdev01
+malxmetadbdev02
+malxmetadbdev03
+
+[docker-radioarkiv-prod]
+malxradioarkiva01
+malxradioarkiva02
+malxradioarkiva03
+malxradioarkivb03
+malxradioarkivdb01
+
+### BUild/devops
+[build]
+malxradioarkivbuild01
+
+### Hm. Kinda hard to group.
+[misc-origo]
+malxorigokubectl01
+malxmusikkarkivdbdev01
+malxorigodevops01
+
+### Staging helpers
+[prod:vars]
+stage_environment = prod
+
+[prod:children]
+elasticsearch-radioarkiv-prod
+elasticsearch-musikkarkiv-prod
+mysql-musikkarkiv-prod
+mysql-radioarkiv-prod
+metadata-prod
+virtuoso-folkemusikk-prod
+mediaproxy-musikkarkiv-prod
+docker-radioarkiv-prod
+
+[stage:vars]
+stage_environment = stage
+
+[stage:children]
+elasticsearch-musikkarkiv-stage
+virtuoso-folkemusikk-stage
+mediaproxy-musikkarkiv-stage
+
+[dev:vars]
+stage_environment = stage_environment
+
+[dev:children]
+elasticsearch-radioarkiv-dev
+elasticsearch-musikkarkiv-dev
+virtuoso-folkemusikk-dev
+mediaproxy-musikkarkiv-dev
+docker-radioarkiv-dev
+build

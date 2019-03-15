@@ -1,0 +1,33 @@
+---
+- hosts: all
+  serial: 1   #One host at a time
+  gather_facts: false
+  become: true
+  tasks:
+
+    - name: Get related variables (slack)
+      group_by: key=patch
+
+    #- name: Slack notification - start
+    #  become: false
+    #  local_action:
+    #    module: slack
+    #    token: "{{ slack_token }}"
+    #    msg: "Auto-patching started on {{ inventory_hostname }}"
+    #    color: warning
+
+    - name: Run apt update
+      apt:
+        name: '*'
+        state: latest
+        update_cache: true
+        autoremove: true
+        force_apt_get: true
+
+    #- name: Slack notification - finish
+    #  become: false
+    # local_action:
+    #    module: slack
+    #    token: "{{ slack_token }}"
+    #    msg: "Auto-patching finished on {{ inventory_hostname }}"
+    #    color: warning

@@ -1,0 +1,14 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+
+  - name: Check for reboot file
+    command: test -f /var/run/reboot-required
+    register: rebootfile
+    failed_when: false
+
+  - name: Report reboot status if needed
+    debug:
+        msg: "Reboot needed"
+    when: rebootfile.rc == 0

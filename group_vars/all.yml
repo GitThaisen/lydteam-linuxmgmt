@@ -1,0 +1,6 @@
+---
+influx_url: "http://influx.nrk.no:8086"
+influx_database: lydteam_monitor
+influx_username: lydteam_monitor
+#This one should be protected when updated to real value
+influx_password: lydteam_monitor

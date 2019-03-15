@@ -1,0 +1,11 @@
+## Ansible Playbook to set up telegraf agent for influx
+- hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+    - include_role:
+        name: telegraf
+
+    #- include_role:
+    #    name: telegraf
+    #    tasks_from: test
