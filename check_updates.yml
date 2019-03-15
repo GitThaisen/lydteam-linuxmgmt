@@ -3,11 +3,13 @@
   gather_facts: false
   tasks:
 
-  - name: Check apt-ting
+  - name: Check apt upgradable
     shell: "apt list --upgradable 2>/dev/null | tail -n +2  | wc -l"
     register: updates
     ignore_errors: true
+    no_log: true
 
   - name: Number of updates available
     debug:
-        msg: "Pending APT updates: {{ updates.stdout  }}"
+        msg: "Pending APT updates: {{ updates.stdout }}"
+    when: updates.stdout != "0"
