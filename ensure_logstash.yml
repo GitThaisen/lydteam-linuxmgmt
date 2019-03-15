@@ -1,0 +1,16 @@
+---
+## Ansible Playbook to set up telegraf agent for influx
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+
+    - name: Restart filebeat
+      service:
+        name: filebeat
+        state: restarted
+
+    - name: Restart logstash
+      service:
+        name: logstash
+        state: restarted

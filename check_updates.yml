@@ -6,8 +6,6 @@
   - name: Check apt upgradable
     shell: "apt list --upgradable 2>/dev/null | tail -n +2  | wc -l"
     register: updates
-    ignore_errors: true
-    no_log: true
 
   - name: Number of updates available
     debug:
