@@ -2,7 +2,7 @@ This repo contains a structured inventory and ansible playbooks to manage linux 
 
 An ansible.cfg is included that defaults ansible to use the correct inventory. To run a playbook on all hosts, simply:
 
-  ansible-playbook verify_con.yml
+`ansible-playbook verify_con.yml`
 
 To limit, see inventory/servers for groupings. You can select a stage environment:
 
