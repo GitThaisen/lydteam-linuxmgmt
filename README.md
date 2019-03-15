@@ -1,4 +1,11 @@
-This repo contains a structured inventory and ansible playbooks to manage linux server for Lydteam.
+This repo contains a structured inventory and ansible playbooks to manage linux server for Lydteam. The following tasks are kept here:
+
+* Patching packages on servers
+* Rebooting servers in a sensible order
+* Checking if patching is needed
+* Checking if reboot is needed
+* Setting up monitoring using influxdb
+
 
 An ansible.cfg is included that defaults ansible to use the correct inventory. To run a playbook on all hosts, simply:
 
