@@ -1,18 +1,19 @@
 ---
 ####  Ansible Playbook to set up telegraf agent for influx
-- hosts: build  #Change to all when things run as they should.
+- hosts: all
+  become: true
   tasks:
 
-    - include_role:
-        name: telegraf
-      when: false #Disable temporarily
+    - name: Get vars
+      group_by: key=vault
 
     - include_role:
         name: telegraf
-        tasks_from: input_mysql
-      when: role == mysql
 
     - include_role:
         name: telegraf
         tasks_from: input_docker
-      when: role == docker
+
+    - include_role:
+        name: telegraf
+        tasks_from: input_http_response

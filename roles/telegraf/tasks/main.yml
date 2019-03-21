@@ -8,6 +8,7 @@
   apt_repository:
     repo: deb https://repos.influxdata.com/ubuntu bionic stable
     state: present
+    validate_certs: false
 
 - name: Install telegraf agent
   apt:
@@ -19,6 +20,8 @@
   template:
     src: telegraf.conf  #()?)
     dest: /etc/telegraf/telegraf.conf
+    owner: telegraf
+    group: telegraf
     mode: 0440
   notify:
     - restart telegraf

@@ -1,0 +1,6 @@
+---
+- name: Set up http response inputs
+  copy:
+    src: input_http_response.conf
+    dest: /etc/telegraf/telegraf.d/input_http_response.conf
+  notify: restart telegraf
