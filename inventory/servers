@@ -1,4 +1,8 @@
 #Naming rule: role-project-stage_environment
+[all:vars]
+project = undefined
+role = undefined
+stage_environment = undefined
 
 ### Elasticsearch
 
@@ -9,10 +13,16 @@ role = elasticsearch
 elasticsearch-musikkarkiv
 elasticsearch-radioarkiv
 
+[elasticsearch-musikkarkiv:vars]
+project = musikkarkiv
+
 [elasticsearch-musikkarkiv:children]
 elasticsearch-musikkarkiv-dev
 elasticsearch-musikkarkiv-stage
 elasticsearch-musikkarkiv-prod
+
+[elasticsearch-radioarkiv:vars]
+project = radioarkiv
 
 [elasticsearch-radioarkiv:children]
 elasticsearch-radioarkiv-prod
@@ -49,14 +59,26 @@ role = mysql
 
 [mysql:children]
 mysql-musikkarkiv
+mysql-radioarkiv
+
+[mysql-musikkarkiv:vars]
+project = musikkarkiv
 
 [mysql-musikkarkiv:children]
 mysql-musikkarkiv-prod
-mysql-radioarkiv-prod
 
 [mysql-musikkarkiv-prod]
 malxmusikkarkivmysql01
 malxmusikkarkivmysql02
+
+[mysql-radioarkiv:vars]
+project = radioarkiv
+
+[mysql-radioarkiv:vars]
+project = radioarkiv
+
+[mysql-radioarkiv:children]
+mysql-radioarkiv-prod
 
 [mysql-radioarkiv-prod]
 malxradioarkivmysql01
@@ -124,12 +146,15 @@ role = docker
 [docker:children]
 docker-radioarkiv
 
+[docker-radioarkiv:vars]
+project = radioarkiv
+
 [docker-radioarkiv:children]
 docker-radioarkiv-dev
 docker-radioarkiv-prod
 
+
 [docker-radioarkiv-dev]
-malxmetautv01
 malxmetadev01
 malxmetadev02
 malxmetadev04
@@ -179,7 +204,7 @@ virtuoso-folkemusikk-stage
 mediaproxy-musikkarkiv-stage
 
 [dev:vars]
-stage_environment = stage_environment
+stage_environment = dev
 
 [dev:children]
 elasticsearch-radioarkiv-dev

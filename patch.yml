@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  serial: 1   #One host at a time
+  serial: 12   #One host at a time
   gather_facts: false
   become: true
   tasks:
@@ -17,13 +17,13 @@
       apt:
         name: '*'
         state: latest
-        update_cache: true
+        #update_cache: true
         autoremove: true
         force_apt_get: true
 
     #- name: Slack notification - finish
     #  become: false
-    # local_action:
+    #  local_action:
     #    module: slack
     #    token: "{{ slack_token }}"
     #    msg: "Auto-patching finished on {{ inventory_hostname }}"

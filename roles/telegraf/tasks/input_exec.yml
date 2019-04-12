@@ -1,0 +1,12 @@
+---
+- name: Install script to generate server server stats
+  copy:
+    src: server_status.sh
+    dest: /usr/local/bin/status.sh
+    mode: "0755"
+
+- name: Set up input for exec collection
+  copy:
+    src: input_exec.conf
+    dest: /etc/telegraf/telegraf.d/input_exec.conf
+  notify: restart telegraf

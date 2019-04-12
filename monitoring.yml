@@ -12,6 +12,10 @@
 
     - include_role:
         name: telegraf
+        tasks_from: input_exec
+
+    - include_role:
+        name: telegraf
         tasks_from: input_docker
 
     - include_role:
