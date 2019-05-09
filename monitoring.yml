@@ -21,3 +21,14 @@
     - include_role:
         name: telegraf
         tasks_from: input_http_response
+
+- hosts: elasticsearch
+  become: true
+  tasks:
+
+    - name: Get vars
+      group_by: key=vault
+
+    - include_role:
+        name: telegraf
+        tasks_from: input_elastic
