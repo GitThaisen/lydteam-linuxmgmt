@@ -5,12 +5,19 @@
   become: true
   tasks:
 
-    - name: Restart filebeat
+    - name: Check if filebeat installed
+      command: test -f /etc/filebeat/filebeat.yml
+      register: fb_exists
+      failed_when: false
+
+    - name: Start filebeat
       service:
         name: filebeat
-        state: restarted
+        state: started
+      when: fb_exists.rc == 0
 
-    - name: Restart logstash
+    - name: Start logstash
       service:
         name: logstash
-        state: restarted
+        state: started
+      when: fb_exists.rc == 0
