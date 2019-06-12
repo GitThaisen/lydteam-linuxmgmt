@@ -1,0 +1,41 @@
+---
+- name: Set up elk repo key
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Set up elk repo
+  apt_repository:
+    repo: deb https://artifacts.elastic.co/packages/7.x/apt stable main
+    state: present
+
+- name: Install packages
+  package:
+    name:
+      - filebeat
+      - logstash
+    state: present
+
+- name: Configure filebeat
+  copy:
+    src: filebeat.yml
+    dest: /etc/filebeat/filebeat.yml
+  notify: restart filebeat
+
+- name: Configure logstash
+  template:
+    src: metadata.conf
+    dest: /etc/logstash/conf.d/metadata.conf
+  notify: restart logstash
+
+- name: Ensure service status filebeat
+  service:
+    name: filebeat
+    state: started
+    enabled: true
+
+- name: Ensure service status logstash
+  service:
+    name: logstash
+    state: started
+    enabled: true

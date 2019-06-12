@@ -16,10 +16,6 @@
 
     - include_role:
         name: telegraf
-        tasks_from: input_docker
-
-    - include_role:
-        name: telegraf
         tasks_from: input_http_response
 
 - hosts: elasticsearch
@@ -32,3 +28,25 @@
     - include_role:
         name: telegraf
         tasks_from: input_elastic
+
+- hosts: docker
+  become: true
+  tasks:
+
+    - name: Get vars
+      group_by: key=vault
+
+    - include_role:
+        name: telegraf
+        tasks_from: input_docker
+
+- hosts: mysql
+  become: true
+  tasks:
+
+    - name: Get vars
+      group_by: key=vault
+
+    - include_role:
+        name: telegraf
+        tasks_from: input_mysql

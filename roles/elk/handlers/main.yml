@@ -1,0 +1,10 @@
+---
+- name: restart filebeat
+  service:
+    name: filebeat
+    state: restarted
+
+- name: restart logstash
+  service:
+    name: logstash
+    state: restarted

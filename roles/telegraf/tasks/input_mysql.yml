@@ -1,8 +1,9 @@
 ---
-- name: Set up elasticsearch input
+- name: Set up mysql input
   copy:
-    src: input_elastic.conf
-    dest: /etc/telegraf/telegraf.d/input_elastic.conf
+    src: input_mysql.conf
+    dest: /etc/telegraf/telegraf.d/input_mysql.conf
     owner: telegraf
     group: telegraf
     mode: 0440
+  notify: restart telegraf

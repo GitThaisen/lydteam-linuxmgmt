@@ -15,11 +15,6 @@
     name: telegraf
     state: latest
 
-- name: Remove icinga input
-  file:
-    path: /etc/telegraf/telegraf.d/input_icinga2.conf
-    state: absent
-
 #databasename, username and password needed
 - name: Configure telegraf
   template:

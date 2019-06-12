@@ -1,0 +1,8 @@
+---
+## Ansible Playbook to set up telegraf agent for influx
+- hosts: all
+  become: true
+  tasks:
+
+    - include_role:
+        name: elk

@@ -1,4 +1,4 @@
-#Naming rule: role-project-stage_environment
+#Naming rule: role_project_stage_environment
 [all:vars]
 project = undefined
 role = undefined
@@ -10,44 +10,44 @@ stage_environment = undefined
 role = elasticsearch
 
 [elasticsearch:children]
-elasticsearch-musikkarkiv
-elasticsearch-radioarkiv
+elasticsearch_musikkarkiv
+elasticsearch_radioarkiv
 
-[elasticsearch-musikkarkiv:vars]
+[elasticsearch_musikkarkiv:vars]
 project = musikkarkiv
 
-[elasticsearch-musikkarkiv:children]
-elasticsearch-musikkarkiv-dev
-elasticsearch-musikkarkiv-stage
-elasticsearch-musikkarkiv-prod
+[elasticsearch_musikkarkiv:children]
+elasticsearch_musikkarkiv_dev
+elasticsearch_musikkarkiv_stage
+elasticsearch_musikkarkiv_prod
 
-[elasticsearch-radioarkiv:vars]
+[elasticsearch_radioarkiv:vars]
 project = radioarkiv
 
-[elasticsearch-radioarkiv:children]
-elasticsearch-radioarkiv-prod
-elasticsearch-radioarkiv-dev
+[elasticsearch_radioarkiv:children]
+elasticsearch_radioarkiv_prod
+elasticsearch_radioarkiv_dev
 
-[elasticsearch-radioarkiv-prod]
+[elasticsearch_radioarkiv_prod]
 malxradioarkives01
 malxradioarkives02
 malxradioarkives03
 
-[elasticsearch-radioarkiv-dev]
+[elasticsearch_radioarkiv_dev]
 malxradioarkivesdev01
 malxradioarkivesdev02
 
-[elasticsearch-musikkarkiv-dev]
+[elasticsearch_musikkarkiv_dev]
 malxmusikkarkivesdev01
 malxmusikkarkivesdev02
 malxmusikkarkivesdev03
 
-[elasticsearch-musikkarkiv-stage]
+[elasticsearch_musikkarkiv_stage]
 malxmusikkarkivesstage01
 malxmusikkarkivesstage02
 malxmusikkarkivesstage03
 
-[elasticsearch-musikkarkiv-prod]
+[elasticsearch_musikkarkiv_prod]
 malxmusikkarkives01
 malxmusikkarkives02
 malxmusikkarkives03
@@ -58,31 +58,37 @@ malxmusikkarkives03
 role = mysql
 
 [mysql:children]
-mysql-musikkarkiv
-mysql-radioarkiv
+mysql_musikkarkiv
+mysql_radioarkiv
 
-[mysql-musikkarkiv:vars]
+[mysql_musikkarkiv:vars]
 project = musikkarkiv
 
-[mysql-musikkarkiv:children]
-mysql-musikkarkiv-prod
+[mysql_musikkarkiv:children]
+mysql_musikkarkiv_prod
 
-[mysql-musikkarkiv-prod]
+[mysql_musikkarkiv_prod]
 malxmusikkarkivmysql01
 malxmusikkarkivmysql02
 
-[mysql-radioarkiv:vars]
+[mysql_radioarkiv:vars]
 project = radioarkiv
 
-[mysql-radioarkiv:vars]
+[mysql_radioarkiv:vars]
 project = radioarkiv
 
-[mysql-radioarkiv:children]
-mysql-radioarkiv-prod
+[mysql_radioarkiv:children]
+mysql_radioarkiv_prod
 
-[mysql-radioarkiv-prod]
+[mysql_radioarkiv_prod]
 malxradioarkivmysql01
 malxradioarkivmysql02
+
+# Set up for copyting mysqldumps from prod to stage
+[mysql_source]
+malxradioarkivmysql02
+[mysql_target]
+malxradioarkivmysqldev01
 
 ### Metadata
 
@@ -90,9 +96,9 @@ malxradioarkivmysql02
 role = metadata
 
 [metadata:children]
-metadata-prod
+metadata_prod
 
-[metadata-prod]
+[metadata_prod]
 malxautoritetsdb01
 
 ### Virtuoso
@@ -100,20 +106,20 @@ malxautoritetsdb01
 role = virtuoso
 
 [virtuoso:children]
-virtuoso-folkemusikk
+virtuoso_folkemusikk
 
-[virtuoso-folkemusikk:children]
-virtuoso-folkemusikk-dev
-virtuoso-folkemusikk-stage
-virtuoso-folkemusikk-prod
+[virtuoso_folkemusikk:children]
+virtuoso_folkemusikk_dev
+virtuoso_folkemusikk_stage
+virtuoso_folkemusikk_prod
 
-[virtuoso-folkemusikk-dev]
+[virtuoso_folkemusikk_dev]
 malxfolkemusikkvirtuosodev01
 
-[virtuoso-folkemusikk-stage]
+[virtuoso_folkemusikk_stage]
 malxfolkemusikkvirtuosostage01
 
-[virtuoso-folkemusikk-prod]
+[virtuoso_folkemusikk_prod]
 malxfolkemusikkvirtuoso01
 
 ### Mediaproxy
@@ -122,20 +128,20 @@ malxfolkemusikkvirtuoso01
 role = mediaproxy
 
 [mediaproxy:children]
-mediaproxy-musikkarkiv
+mediaproxy_musikkarkiv
 
-[mediaproxy-musikkarkiv:children]
-mediaproxy-musikkarkiv-dev
-mediaproxy-musikkarkiv-stage
-mediaproxy-musikkarkiv-prod
+[mediaproxy_musikkarkiv:children]
+mediaproxy_musikkarkiv_dev
+mediaproxy_musikkarkiv_stage
+mediaproxy_musikkarkiv_prod
 
-[mediaproxy-musikkarkiv-dev]
+[mediaproxy_musikkarkiv_dev]
 malxmusikkarkivmediaproxydev01
 
-[mediaproxy-musikkarkiv-stage]
+[mediaproxy_musikkarkiv_stage]
 malxmusikkarkivmediaproxystg01
 
-[mediaproxy-musikkarkiv-prod]
+[mediaproxy_musikkarkiv_prod]
 malxmusikkarkivmediaproxy01
 
 ### Docker
@@ -144,27 +150,29 @@ malxmusikkarkivmediaproxy01
 role = docker
 
 [docker:children]
-docker-radioarkiv
+docker_radioarkiv
 
-[docker-radioarkiv:vars]
+[docker_radioarkiv:vars]
 project = radioarkiv
 
-[docker-radioarkiv:children]
-docker-radioarkiv-dev
-docker-radioarkiv-prod
+[docker_radioarkiv:children]
+docker_radioarkiv_dev
+docker_radioarkiv_stage
+docker_radioarkiv_prod
 
+[docker_radioarkiv_dev]
+malxmetadev04
 
-[docker-radioarkiv-dev]
+[docker_radioarkiv_stage]
 malxmetadev01
 malxmetadev02
-malxmetadev04
 drlxmetadev05
 drlxmetadev06
 malxmetadbdev01
 malxmetadbdev02
 malxmetadbdev03
 
-[docker-radioarkiv-prod]
+[docker_radioarkiv_prod]
 malxradioarkiva01
 malxradioarkiva02
 malxradioarkiva03
@@ -176,7 +184,7 @@ malxradioarkivdb01
 malxradioarkivbuild01
 
 ### Hm. Kinda hard to group.
-[misc-origo]
+[misc_origo]
 malxorigokubectl01
 malxmusikkarkivdbdev01
 malxorigodevops01
@@ -186,30 +194,31 @@ malxorigodevops01
 stage_environment = prod
 
 [prod:children]
-elasticsearch-radioarkiv-prod
-elasticsearch-musikkarkiv-prod
-mysql-musikkarkiv-prod
-mysql-radioarkiv-prod
-metadata-prod
-virtuoso-folkemusikk-prod
-mediaproxy-musikkarkiv-prod
-docker-radioarkiv-prod
+elasticsearch_radioarkiv_prod
+elasticsearch_musikkarkiv_prod
+mysql_musikkarkiv_prod
+mysql_radioarkiv_prod
+metadata_prod
+virtuoso_folkemusikk_prod
+mediaproxy_musikkarkiv_prod
+docker_radioarkiv_prod
 
 [stage:vars]
 stage_environment = stage
 
 [stage:children]
-elasticsearch-musikkarkiv-stage
-virtuoso-folkemusikk-stage
-mediaproxy-musikkarkiv-stage
+elasticsearch_musikkarkiv_stage
+virtuoso_folkemusikk_stage
+mediaproxy_musikkarkiv_stage
+docker_radioarkiv_stage
 
 [dev:vars]
 stage_environment = dev
 
 [dev:children]
-elasticsearch-radioarkiv-dev
-elasticsearch-musikkarkiv-dev
-virtuoso-folkemusikk-dev
-mediaproxy-musikkarkiv-dev
-docker-radioarkiv-dev
+elasticsearch_radioarkiv_dev
+elasticsearch_musikkarkiv_dev
+virtuoso_folkemusikk_dev
+mediaproxy_musikkarkiv_dev
+docker_radioarkiv_dev
 build

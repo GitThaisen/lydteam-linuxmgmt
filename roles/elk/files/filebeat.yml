@@ -1,0 +1,7 @@
+filebeat.inputs:
+- type: log
+  paths:
+    - /opt/metadata/logs/*/*.json
+    - /opt/metadata/logs/radioarkiv-standalone/search.log
+output.logstash:
+  hosts: ["localhost:5044"]

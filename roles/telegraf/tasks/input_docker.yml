@@ -1,14 +1,8 @@
 ---
-- name: Check for docker installation
-  command: which docker
-  register: has_docker
-  ignore_errors: true
-
 - name: Add telegraf to docker group
   user:
     name: telegraf
     groups: docker
-  when: has_docker.rc == 0
   notify: restart telegraf
 
 - name: Set up docker input
@@ -18,5 +12,4 @@
     owner: telegraf
     group: telegraf
     mode: 0440
-  when: has_docker.rc == 0
   notify: restart telegraf
