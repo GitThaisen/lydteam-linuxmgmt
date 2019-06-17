@@ -1,0 +1,11 @@
+---
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+
+    - name: Run apt update
+      package:
+        name:
+          - npm
+        state: latest

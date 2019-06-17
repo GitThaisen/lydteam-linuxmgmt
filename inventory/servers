@@ -175,6 +175,11 @@ malxradioarkivdb01
 
 ### BUild/devops
 [build]
+malxmetadbdev01  #master node
+malxmetadbdev02
+malxmetadbdev03
+malexmetadev02
+malxorigokubectl01
 malxradioarkivbuild01
 
 ### Hm. Kinda hard to group.
