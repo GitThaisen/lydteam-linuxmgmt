@@ -1,0 +1,28 @@
+---
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+
+    - name: Make backup dir for apt repo list files
+      file:
+        path: /root/sources.list.backups
+        state: directory
+
+    - name: Find all in /etc/apt/sources.list.d
+      find:
+        paths:
+          - /etc/apt/sources.list.d
+        excludes:
+          - "*.list"
+      register: filemap
+
+    #- debug:
+    #   msg: "{{ item.path }}"
+    #  with_items: "{{ filemap.files }}"
+    #    loop_control:
+    #    label: "path"
+
+    - name: Move registered files to backup dir
+      command: "mv {{ item.path }} /root/sources.list.backups/"
+      with_items: "{{ filemap.files }}"

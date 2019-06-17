@@ -84,12 +84,6 @@ mysql_radioarkiv_prod
 malxradioarkivmysql01
 malxradioarkivmysql02
 
-# Set up for copyting mysqldumps from prod to stage
-[mysql_source]
-malxradioarkivmysql02
-[mysql_target]
-malxradioarkivmysqldev01
-
 ### Metadata
 
 [metadata:vars]
