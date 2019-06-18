@@ -1,11 +1,50 @@
 ---
-- hosts: all
-  gather_facts: false
+- hosts: build
+  gather_facts: true
   become: true
   tasks:
 
-    - name: Run apt update
+    - name: Clean out ppa files for chrislea, bad apt_repository
+      file:
+        path: "{{item}}"
+        state: absent
+      with_items:
+        - /etc/apt/sources.list.d/ppa_chris_lea_node_js_bionic.list
+        - /etc/apt/sources.list.d/ppa_chris_lea_node_js_xenial.list
+        - /etc/apt/sources.list.d/nodejs.list
+
+    # - name: Clean out packages before continue
+    #   package:
+    #     name:
+    #       - nodejs
+    #       - npm
+    #     state: absent
+
+    - name: Install apt key for nodejs repo
+      apt_key:
+        url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+
+    - name: Set up repo for nodejs
+      apt_repository:
+        filename: nodejs
+        repo: "deb https://deb.nodesource.com/node_10.x {{ ansible_distribution_release }} main"
+
+    - name: Install nodejs
       package:
         name:
-          - npm
+          - nodejs
         state: latest
+
+    - name: Check versions
+      command: nodejs --version
+      register: nodeversion
+
+    - debug:
+        msg: "{{ nodeversion.stdout }}"
+
+    - name: Check versions
+      command: npm --version
+      register: npmversion
+
+    - debug:
+        msg: "{{ npmversion.stdout }}"

@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+
+    - name: Get ubuntu version
+      command: cat /etc/issue
+      register: issue
+
+    - debug:
+        msg: "{{ inventory_hostname }}: {{ issue.stdout }}"
+      when: issue.stdout is search("16.04")
