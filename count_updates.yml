@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+
+  - name: Check apt upgradable
+    shell: "apt list --upgradable 2>/dev/null | tail -n +2  | wc -l"
+    register: updates
+    ignore_errors: true
+
+  - name: Number of updates available
+    debug:
+        msg: "{{ updates.stdout }} updates for server {{ inventory_hostname }}"

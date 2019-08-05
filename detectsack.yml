@@ -1,0 +1,22 @@
+---
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+
+    - name: Detect TCP SACK
+      command: sysctl net.ipv4.tcp_sack
+      register: sackcheck
+
+    - debug:
+        msg: "{{ sackcheck.stdout }}"
+      when: sackcheck.stdout is search("tcp_sack = 1")
+
+    - name: Set tcp_sack to 0 for relevant servers
+      sysctl:
+        state: present
+        name: net.ipv4.tcp_sack
+        value: 0
+      when: sackcheck.stdout is search("tcp_sack = 1")
+      tags:
+        - execute

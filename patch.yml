@@ -1,6 +1,5 @@
 ---
 - hosts: all
-  serial: 12   #One host at a time
   gather_facts: false
   become: true
   tasks:
