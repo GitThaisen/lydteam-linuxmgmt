@@ -1,0 +1,16 @@
+---
+## Ansible Playbook to set up telegraf agent for influx
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+
+    - name: Is jenkins present?
+      shell: "ps ax | grep [j]enkins"
+      register: dck
+      ignore_errors: true
+
+    - name: Report docker installation
+      debug:
+        msg: "Jenkins is present"
+      when: dck.stdout is search("0")

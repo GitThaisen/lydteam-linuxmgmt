@@ -13,7 +13,7 @@
 - name: Install telegraf agent
   apt:
     name: telegraf
-    state: latest
+    state: installed
 
 #databasename, username and password needed
 - name: Configure telegraf

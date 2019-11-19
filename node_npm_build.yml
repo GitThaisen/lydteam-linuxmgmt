@@ -1,5 +1,5 @@
 ---
-- hosts: build
+- hosts: jenkins
   gather_facts: true
   become: true
   tasks:
@@ -27,7 +27,7 @@
     - name: Set up repo for nodejs
       apt_repository:
         filename: nodejs
-        repo: "deb https://deb.nodesource.com/node_10.x {{ ansible_distribution_release }} main"
+        repo: "deb https://deb.nodesource.com/node_12.x {{ ansible_distribution_release }} main"
 
     - name: Install nodejs
       package:

@@ -1,0 +1,569 @@
+all:
+  children:
+    dev:
+      children:
+        build:
+          hosts:
+            malxmetadbdev01:
+              autopatch: 'true'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: radioarkiv
+              role: docker
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: stage
+              tag_jenkins: 'true'
+            malxmetadbdev02:
+              autopatch: 'true'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: radioarkiv
+              role: docker
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: stage
+              tag_jenkins: 'true'
+            malxmetadbdev03:
+              autopatch: 'true'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: radioarkiv
+              role: docker
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: stage
+              tag_jenkins: 'true'
+            malxmetadev02:
+              autopatch: 'true'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: radioarkiv
+              role: docker
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: stage
+              tag_jenkins: 'true'
+            malxorigokubectl01:
+              autopatch: 'true'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: undefined
+              role: undefined
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: dev
+              tag_jenkins: 'true'
+            malxradioarkivbuild01:
+              autopatch: 'true'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: undefined
+              role: undefined
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: dev
+              tag_jenkins: 'true'
+        docker_radioarkiv_dev:
+          hosts:
+            malxmetadev04:
+              autopatch: 'true'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: radioarkiv
+              role: docker
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: dev
+              tag_jenkins: 'false'
+        elasticsearch_musikkarkiv_dev:
+          hosts:
+            malxmusikkarkivesdev01:
+              autopatch: 'false'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: musikkarkiv
+              role: elasticsearch
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: dev
+              tag_jenkins: 'false'
+            malxmusikkarkivesdev02:
+              autopatch: 'false'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: musikkarkiv
+              role: elasticsearch
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: dev
+              tag_jenkins: 'false'
+            malxmusikkarkivesdev03:
+              autopatch: 'false'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: musikkarkiv
+              role: elasticsearch
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: dev
+              tag_jenkins: 'false'
+        elasticsearch_radioarkiv_dev:
+          hosts:
+            malxradioarkivesdev01:
+              autopatch: 'false'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: radioarkiv
+              role: elasticsearch
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: dev
+              tag_jenkins: 'false'
+            malxradioarkivesdev02:
+              autopatch: 'false'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: radioarkiv
+              role: elasticsearch
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: dev
+              tag_jenkins: 'false'
+        mediaproxy_musikkarkiv_dev:
+          hosts:
+            malxmusikkarkivmediaproxydev01:
+              autopatch: 'true'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: undefined
+              role: mediaproxy
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: dev
+              tag_jenkins: 'false'
+        virtuoso_folkemusikk_dev:
+          hosts:
+            malxfolkemusikkvirtuosodev01:
+              autopatch: 'true'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: undefined
+              role: virtuoso
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: dev
+              tag_jenkins: 'false'
+    docker:
+      children:
+        docker_radioarkiv:
+          children:
+            docker_radioarkiv_dev:
+              hosts:
+                malxmetadev04: {}
+            docker_radioarkiv_prod:
+              hosts:
+                malxradioarkiva01:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: radioarkiv
+                  role: docker
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+                malxradioarkiva02:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: radioarkiv
+                  role: docker
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+                malxradioarkiva03:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: radioarkiv
+                  role: docker
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+                malxradioarkivb03:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: radioarkiv
+                  role: docker
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+                malxradioarkivdb01:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: radioarkiv
+                  role: docker
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+            docker_radioarkiv_stage:
+              hosts:
+                drlxmetadev05:
+                  autopatch: 'true'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: radioarkiv
+                  role: docker
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: stage
+                  tag_jenkins: 'false'
+                malxmetadbdev01: {}
+                malxmetadbdev02: {}
+                malxmetadbdev03: {}
+                malxmetadev01:
+                  autopatch: 'true'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: radioarkiv
+                  role: docker
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: stage
+                  tag_jenkins: 'false'
+                malxmetadev02: {}
+    elasticsearch:
+      children:
+        elasticsearch_musikkarkiv:
+          children:
+            elasticsearch_musikkarkiv_dev:
+              hosts:
+                malxmusikkarkivesdev01: {}
+                malxmusikkarkivesdev02: {}
+                malxmusikkarkivesdev03: {}
+            elasticsearch_musikkarkiv_prod:
+              hosts:
+                malxmusikkarkives01:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: musikkarkiv
+                  role: elasticsearch
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+                malxmusikkarkives02:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: musikkarkiv
+                  role: elasticsearch
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+                malxmusikkarkives03:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: musikkarkiv
+                  role: elasticsearch
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+            elasticsearch_musikkarkiv_stage:
+              hosts:
+                malxmusikkarkivesstage01:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: musikkarkiv
+                  role: elasticsearch
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: stage
+                  tag_jenkins: 'false'
+                malxmusikkarkivesstage02:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: musikkarkiv
+                  role: elasticsearch
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: stage
+                  tag_jenkins: 'false'
+                malxmusikkarkivesstage03:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: musikkarkiv
+                  role: elasticsearch
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: stage
+                  tag_jenkins: 'false'
+        elasticsearch_radioarkiv:
+          children:
+            elasticsearch_radioarkiv_dev:
+              hosts:
+                malxradioarkivesdev01: {}
+                malxradioarkivesdev02: {}
+            elasticsearch_radioarkiv_prod:
+              hosts:
+                malxradioarkives01:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: radioarkiv
+                  role: elasticsearch
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+                malxradioarkives02:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: radioarkiv
+                  role: elasticsearch
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+                malxradioarkives03:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: radioarkiv
+                  role: elasticsearch
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+    jenkins:
+      hosts:
+        malxmetadbdev01: {}
+        malxmetadbdev02: {}
+        malxmetadbdev03: {}
+        malxmetadev02: {}
+        malxorigokubectl01: {}
+        malxradioarkivbuild01: {}
+    jenkins_master:
+      hosts:
+        malxmetadbdev01: {}
+    mediaproxy:
+      children:
+        mediaproxy_musikkarkiv:
+          children:
+            mediaproxy_musikkarkiv_dev:
+              hosts:
+                malxmusikkarkivmediaproxydev01: {}
+            mediaproxy_musikkarkiv_prod:
+              hosts:
+                malxmusikkarkivmediaproxy01:
+                  autopatch: 'true'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: undefined
+                  role: mediaproxy
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+            mediaproxy_musikkarkiv_stage:
+              hosts:
+                malxmusikkarkivmediaproxystg01:
+                  autopatch: 'true'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: undefined
+                  role: mediaproxy
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: stage
+                  tag_jenkins: 'false'
+    metadata:
+      children:
+        metadata_prod:
+          hosts:
+            malxautoritetsdb01:
+              autopatch: 'false'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: undefined
+              role: metadata
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: prod
+              tag_jenkins: 'false'
+    misc_origo:
+      hosts:
+        malxmusikkarkivdbdev01:
+          autopatch: 'true'
+          influx_database: lydteammonitor
+          influx_url: https://influx.nrk.no:8086
+          influx_username: lydteammonitor
+          project: undefined
+          role: undefined
+          slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+          stage_environment: undefined
+          tag_jenkins: 'false'
+        malxorigodevops01:
+          autopatch: 'true'
+          influx_database: lydteammonitor
+          influx_url: https://influx.nrk.no:8086
+          influx_username: lydteammonitor
+          project: undefined
+          role: undefined
+          slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+          stage_environment: undefined
+          tag_jenkins: 'false'
+    mysql:
+      children:
+        mysql_musikkarkiv:
+          children:
+            mysql_musikkarkiv_prod:
+              hosts:
+                malxmusikkarkivmysql01:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: musikkarkiv
+                  role: mysql
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+                malxmusikkarkivmysql02:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: musikkarkiv
+                  role: mysql
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+        mysql_radioarkiv:
+          children:
+            mysql_radioarkiv_prod:
+              hosts:
+                malxradioarkivmysql01:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: radioarkiv
+                  role: mysql
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+                malxradioarkivmysql02:
+                  autopatch: 'false'
+                  influx_database: lydteammonitor
+                  influx_url: https://influx.nrk.no:8086
+                  influx_username: lydteammonitor
+                  project: radioarkiv
+                  role: mysql
+                  slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+                  stage_environment: prod
+                  tag_jenkins: 'false'
+    prod:
+      children:
+        docker_radioarkiv_prod:
+          hosts:
+            malxradioarkiva01: {}
+            malxradioarkiva02: {}
+            malxradioarkiva03: {}
+            malxradioarkivb03: {}
+            malxradioarkivdb01: {}
+        elasticsearch_musikkarkiv_prod:
+          hosts:
+            malxmusikkarkives01: {}
+            malxmusikkarkives02: {}
+            malxmusikkarkives03: {}
+        elasticsearch_radioarkiv_prod:
+          hosts:
+            malxradioarkives01: {}
+            malxradioarkives02: {}
+            malxradioarkives03: {}
+        mediaproxy_musikkarkiv_prod:
+          hosts:
+            malxmusikkarkivmediaproxy01: {}
+        metadata_prod:
+          hosts:
+            malxautoritetsdb01: {}
+        mysql_musikkarkiv_prod:
+          hosts:
+            malxmusikkarkivmysql01: {}
+            malxmusikkarkivmysql02: {}
+        mysql_radioarkiv_prod:
+          hosts:
+            malxradioarkivmysql01: {}
+            malxradioarkivmysql02: {}
+        virtuoso_folkemusikk_prod:
+          hosts:
+            malxfolkemusikkvirtuoso01:
+              autopatch: 'false'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: undefined
+              role: virtuoso
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: prod
+              tag_jenkins: 'false'
+    stage:
+      children:
+        docker_radioarkiv_stage:
+          hosts:
+            drlxmetadev05: {}
+            malxmetadbdev01: {}
+            malxmetadbdev02: {}
+            malxmetadbdev03: {}
+            malxmetadev01: {}
+            malxmetadev02: {}
+        elasticsearch_musikkarkiv_stage:
+          hosts:
+            malxmusikkarkivesstage01: {}
+            malxmusikkarkivesstage02: {}
+            malxmusikkarkivesstage03: {}
+        mediaproxy_musikkarkiv_stage:
+          hosts:
+            malxmusikkarkivmediaproxystg01: {}
+        virtuoso_folkemusikk_stage:
+          hosts:
+            malxfolkemusikkvirtuosostage01:
+              autopatch: 'true'
+              influx_database: lydteammonitor
+              influx_url: https://influx.nrk.no:8086
+              influx_username: lydteammonitor
+              project: undefined
+              role: virtuoso
+              slack_token: T04MCF2QC/BEY3LQFUH/vkQUzVJvLW5pHRTv8P3AzhFP
+              stage_environment: stage
+              tag_jenkins: 'false'
+    ungrouped: {}
+    virtuoso:
+      children:
+        virtuoso_folkemusikk:
+          children:
+            virtuoso_folkemusikk_dev:
+              hosts:
+                malxfolkemusikkvirtuosodev01: {}
+            virtuoso_folkemusikk_prod:
+              hosts:
+                malxfolkemusikkvirtuoso01: {}
+            virtuoso_folkemusikk_stage:
+              hosts:
+                malxfolkemusikkvirtuosostage01: {}

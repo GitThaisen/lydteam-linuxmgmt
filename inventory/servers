@@ -4,6 +4,7 @@ project = undefined
 role = undefined
 stage_environment = undefined
 autopatch = false
+tag_jenkins = false
 
 ### Elasticsearch
 
@@ -11,16 +12,7 @@ autopatch = false
 role = elasticsearch
 
 [elasticsearch:children]
-elasticsearch_musikkarkiv
 elasticsearch_radioarkiv
-
-[elasticsearch_musikkarkiv:vars]
-project = musikkarkiv
-
-[elasticsearch_musikkarkiv:children]
-elasticsearch_musikkarkiv_dev
-elasticsearch_musikkarkiv_stage
-elasticsearch_musikkarkiv_prod
 
 [elasticsearch_radioarkiv:vars]
 project = radioarkiv
@@ -38,39 +30,13 @@ malxradioarkives03
 malxradioarkivesdev01
 malxradioarkivesdev02
 
-[elasticsearch_musikkarkiv_dev]
-malxmusikkarkivesdev01
-malxmusikkarkivesdev02
-malxmusikkarkivesdev03
-
-[elasticsearch_musikkarkiv_stage]
-malxmusikkarkivesstage01
-malxmusikkarkivesstage02
-malxmusikkarkivesstage03
-
-[elasticsearch_musikkarkiv_prod]
-malxmusikkarkives01
-malxmusikkarkives02
-malxmusikkarkives03
-
 ### MySQL
 
 [mysql:vars]
 role = mysql
 
 [mysql:children]
-mysql_musikkarkiv
 mysql_radioarkiv
-
-[mysql_musikkarkiv:vars]
-project = musikkarkiv
-
-[mysql_musikkarkiv:children]
-mysql_musikkarkiv_prod
-
-[mysql_musikkarkiv_prod]
-malxmusikkarkivmysql01
-malxmusikkarkivmysql02
 
 [mysql_radioarkiv:vars]
 project = radioarkiv
@@ -100,45 +66,6 @@ malxautoritetsdb01
 [virtuoso:vars]
 role = virtuoso
 
-[virtuoso:children]
-virtuoso_folkemusikk
-
-[virtuoso_folkemusikk:children]
-virtuoso_folkemusikk_dev
-virtuoso_folkemusikk_stage
-virtuoso_folkemusikk_prod
-
-[virtuoso_folkemusikk_dev]
-malxfolkemusikkvirtuosodev01 autopatch=true
-
-[virtuoso_folkemusikk_stage]
-malxfolkemusikkvirtuosostage01 autopatch=true
-
-[virtuoso_folkemusikk_prod]
-malxfolkemusikkvirtuoso01
-
-### Mediaproxy
-
-[mediaproxy:vars]
-role = mediaproxy
-
-[mediaproxy:children]
-mediaproxy_musikkarkiv
-
-[mediaproxy_musikkarkiv:children]
-mediaproxy_musikkarkiv_dev
-mediaproxy_musikkarkiv_stage
-mediaproxy_musikkarkiv_prod
-
-[mediaproxy_musikkarkiv_dev]
-malxmusikkarkivmediaproxydev01 autopatch=true
-
-[mediaproxy_musikkarkiv_stage]
-malxmusikkarkivmediaproxystg01 autopatch=true
-
-[mediaproxy_musikkarkiv_prod]
-malxmusikkarkivmediaproxy01 autopatch=true
-
 ### Docker
 
 [docker:vars]
@@ -162,7 +89,6 @@ malxmetadev04 autopatch=true
 malxmetadev01 autopatch=true
 malxmetadev02 autopatch=true
 drlxmetadev05 autopatch=true
-drlxmetadev06 autopatch=true
 malxmetadbdev01 autopatch=true
 malxmetadbdev02 autopatch=true
 malxmetadbdev03 autopatch=true
@@ -185,7 +111,7 @@ malxradioarkivbuild01 autopatch=true
 
 ### Hm. Kinda hard to group.
 [misc_origo]
-malxmusikkarkivdbdev01 autopatch=true
+#malxmusikkarkivdbdev01 autopatch=true
 malxorigodevops01 autopatch=true
 
 ### Staging helpers
@@ -194,21 +120,14 @@ stage_environment = prod
 
 [prod:children]
 elasticsearch_radioarkiv_prod
-elasticsearch_musikkarkiv_prod
-mysql_musikkarkiv_prod
 mysql_radioarkiv_prod
 metadata_prod
-virtuoso_folkemusikk_prod
-mediaproxy_musikkarkiv_prod
 docker_radioarkiv_prod
 
 [stage:vars]
 stage_environment = stage
 
 [stage:children]
-elasticsearch_musikkarkiv_stage
-virtuoso_folkemusikk_stage
-mediaproxy_musikkarkiv_stage
 docker_radioarkiv_stage
 
 [dev:vars]
@@ -216,8 +135,19 @@ stage_environment = dev
 
 [dev:children]
 elasticsearch_radioarkiv_dev
-elasticsearch_musikkarkiv_dev
-virtuoso_folkemusikk_dev
-mediaproxy_musikkarkiv_dev
 docker_radioarkiv_dev
 build
+
+[jenkins]
+malxmetadbdev01
+malxmetadbdev02
+malxmetadbdev03
+malxmetadev02
+malxorigokubectl01
+malxradioarkivbuild01
+
+[jenkins_master]
+malxmetadbdev01
+
+[jenkins:vars]
+tag_jenkins = true

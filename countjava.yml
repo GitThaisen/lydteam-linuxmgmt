@@ -1,0 +1,16 @@
+---
+## Ansible Playbook to set up telegraf agent for influx
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+
+    - name: Check java?
+      shell: "java -version 2>&1 | head -n 1"
+      register: java
+      ignore_errors: true
+
+    - name: Report java installation
+      debug:
+        msg: "Java is present, version {{ java.stdout }}"
+      when: java.rc == 0

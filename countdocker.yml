@@ -1,0 +1,16 @@
+---
+## Ansible Playbook to set up telegraf agent for influx
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+
+    - name: Is docker present?
+      command: docker ps
+      register: dck
+      ignore_errors: true
+
+    - name: Report docker installation
+      debug:
+        msg: "Docker is present"
+      when: dck.rc == 0

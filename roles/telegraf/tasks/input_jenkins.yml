@@ -6,3 +6,4 @@
     owner: telegraf
     group: telegraf
     mode: 0440
+  notify: restart telegraf

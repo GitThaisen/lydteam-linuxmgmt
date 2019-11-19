@@ -19,6 +19,8 @@
         #update_cache: true
         autoremove: true
         force_apt_get: true
+      tags:
+        - patch
 
     - name: Slack notification - finish
       become: false

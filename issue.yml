@@ -10,4 +10,3 @@
 
     - debug:
         msg: "{{ inventory_hostname }}: {{ issue.stdout }}"
-      when: issue.stdout is search("16.04")
